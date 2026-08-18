@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="ms">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Duit Berkembang - E Wallet</title>
+    <title>Bantuan STR - Portal Demo</title>
 
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: Arial, Helvetica, sans-serif;
         }
 
         body {
-            background: #f3f6fb;
+            background: #f1f5f9;
             color: #1e293b;
         }
 
@@ -24,218 +24,316 @@
             font-family: inherit;
         }
 
+        button,
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
         .hidden {
             display: none !important;
         }
 
-        /* LOGIN */
+        /* =========================
+           DEMO WARNING
+        ========================= */
 
-        .login-page {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-            background: linear-gradient(135deg, #087f5b, #20c997);
+        .demo-banner {
+            background: #991b1b;
+            color: white;
+            text-align: center;
+            padding: 9px 15px;
+            font-size: 13px;
+            font-weight: bold;
         }
 
-        .login-box {
+
+        /* =========================
+           LOGIN
+        ========================= */
+
+        .login-page {
+            min-height: calc(100vh - 36px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #064e3b,
+                    #047857,
+                    #10b981
+                );
+        }
+
+        .login-container {
             width: 100%;
-            max-width: 400px;
+            max-width: 430px;
+        }
+
+        .login-card {
             background: white;
             padding: 35px;
-            border-radius: 22px;
-            box-shadow: 0 20px 50px rgba(0,0,0,.15);
+            border-radius: 24px;
+            box-shadow: 0 20px 60px rgba(0,0,0,.20);
         }
 
         .logo {
-            width: 65px;
-            height: 65px;
-            background: #087f5b;
-            color: white;
-            border-radius: 18px;
+            width: 75px;
+            height: 75px;
+            margin: auto;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 28px;
+            border-radius: 20px;
+            background: #047857;
+            color: white;
             font-weight: bold;
-            margin: 0 auto 15px;
+            font-size: 20px;
+            box-shadow: 0 8px 20px rgba(4,120,87,.25);
         }
 
-        .login-box h1 {
+        .login-title {
             text-align: center;
-            margin-bottom: 7px;
-            color: #087f5b;
+            color: #065f46;
+            margin-top: 18px;
+            font-size: 28px;
         }
 
-        .login-box p {
+        .login-subtitle {
             text-align: center;
             color: #64748b;
-            margin-bottom: 25px;
+            margin-top: 8px;
+            margin-bottom: 28px;
         }
 
-        .input-group {
-            margin-bottom: 15px;
+        .field {
+            margin-bottom: 17px;
         }
 
-        .input-group label {
+        .field label {
             display: block;
-            font-size: 14px;
             margin-bottom: 7px;
             font-weight: bold;
+            font-size: 14px;
         }
 
-        .input-group input {
+        .field input {
             width: 100%;
-            padding: 13px 15px;
-            border: 1px solid #dbe2ea;
-            border-radius: 10px;
+            padding: 14px;
+            border: 1px solid #cbd5e1;
+            border-radius: 11px;
             outline: none;
+            font-size: 15px;
         }
 
-        .input-group input:focus {
-            border-color: #20c997;
+        .field input:focus {
+            border-color: #10b981;
+            box-shadow: 0 0 0 3px rgba(16,185,129,.12);
         }
 
-        .btn {
-            border: none;
-            cursor: pointer;
-            padding: 13px 18px;
-            border-radius: 10px;
+        .main-button {
+            width: 100%;
+            padding: 14px;
+            border: 0;
+            border-radius: 11px;
+            background: #047857;
+            color: white;
+            font-size: 15px;
             font-weight: bold;
+            cursor: pointer;
             transition: .2s;
         }
 
-        .btn:hover {
+        .main-button:hover {
+            background: #065f46;
             transform: translateY(-1px);
         }
 
-        .btn-primary {
-            width: 100%;
-            background: #087f5b;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #066b4d;
-        }
-
-        .login-message {
-            margin-top: 15px;
+        .login-error {
+            min-height: 20px;
+            margin-top: 13px;
+            color: #dc2626;
             text-align: center;
             font-size: 14px;
-            color: #dc2626;
         }
 
-        /* APP */
-
-        .app {
-            min-height: 100vh;
+        .demo-account {
+            margin-top: 18px;
+            padding: 13px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 10px;
+            font-size: 13px;
+            color: #166534;
+            text-align: center;
         }
+
+
+        /* =========================
+           NAVBAR
+        ========================= */
 
         .navbar {
             background: white;
-            border-bottom: 1px solid #e5e7eb;
-            padding: 15px 5%;
+            min-height: 70px;
+            padding: 12px 5%;
             display: flex;
-            align-items: center;
             justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #e2e8f0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
         }
 
         .brand {
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-size: 20px;
+            gap: 12px;
             font-weight: bold;
-            color: #087f5b;
+            color: #065f46;
+            font-size: 20px;
         }
 
-        .brand-logo {
-            width: 42px;
-            height: 42px;
-            background: #087f5b;
+        .brand-icon {
+            width: 43px;
+            height: 43px;
+            background: #047857;
             color: white;
-            border-radius: 12px;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: bold;
         }
 
-        .logout {
+        .logout-button {
+            padding: 10px 16px;
+            border: 0;
+            border-radius: 9px;
             background: #fee2e2;
-            color: #dc2626;
+            color: #b91c1c;
+            font-weight: bold;
+            cursor: pointer;
         }
 
-        .container {
-            max-width: 1100px;
+
+        /* =========================
+           MAIN
+        ========================= */
+
+        .main-container {
+            max-width: 1150px;
             margin: auto;
             padding: 30px 20px;
         }
 
         .welcome {
-            margin-bottom: 20px;
+            margin-bottom: 22px;
         }
 
         .welcome h2 {
-            margin-bottom: 5px;
+            color: #0f172a;
+            margin-bottom: 6px;
         }
 
         .welcome p {
             color: #64748b;
         }
 
-        /* BALANCE */
+
+        /* =========================
+           BALANCE CARD
+        ========================= */
 
         .balance-card {
-            background: linear-gradient(135deg, #087f5b, #20c997);
-            color: white;
-            border-radius: 22px;
-            padding: 28px;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 15px 35px rgba(8,127,91,.2);
+            padding: 30px;
+            color: white;
+            border-radius: 23px;
+            background:
+                linear-gradient(
+                    135deg,
+                    #065f46,
+                    #047857,
+                    #10b981
+                );
+            box-shadow: 0 18px 40px rgba(4,120,87,.20);
+        }
+
+        .balance-card::before {
+            content: "";
+            position: absolute;
+            width: 220px;
+            height: 220px;
+            border-radius: 50%;
+            right: -90px;
+            top: -110px;
+            background: rgba(255,255,255,.08);
         }
 
         .balance-card::after {
             content: "";
             position: absolute;
-            width: 180px;
-            height: 180px;
-            background: rgba(255,255,255,.08);
+            width: 150px;
+            height: 150px;
             border-radius: 50%;
-            right: -50px;
-            top: -70px;
+            right: 100px;
+            bottom: -100px;
+            background: rgba(255,255,255,.06);
         }
 
         .balance-label {
             opacity: .85;
-            margin-bottom: 10px;
+            font-size: 14px;
+            position: relative;
+            z-index: 1;
         }
 
         .balance {
-            font-size: 38px;
+            font-size: 42px;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin: 9px 0 24px;
+            position: relative;
+            z-index: 1;
         }
 
-        .balance-actions {
+        .balance-buttons {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
         }
 
-        .btn-white {
+        .white-button,
+        .telegram-button {
+            display: inline-block;
+            text-decoration: none;
+            border: 0;
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .white-button {
             background: white;
-            color: #087f5b;
+            color: #047857;
         }
 
-        .btn-telegram {
-            background: #229ED9;
+        .telegram-button {
+            background: #229ed9;
             color: white;
         }
 
-        /* GRID */
+
+        /* =========================
+           GRID
+        ========================= */
 
         .grid {
             display: grid;
@@ -246,177 +344,368 @@
 
         .card {
             background: white;
+            padding: 23px;
             border-radius: 18px;
-            padding: 22px;
-            box-shadow: 0 5px 20px rgba(0,0,0,.04);
+            box-shadow: 0 4px 20px rgba(15,23,42,.05);
         }
 
-        .card h3 {
+        .card-title {
+            font-size: 18px;
             margin-bottom: 18px;
         }
 
-        /* WITHDRAW */
 
-        .withdraw-input {
+        /* =========================
+           WITHDRAW
+        ========================= */
+
+        .amount-input {
             width: 100%;
             padding: 14px;
-            border: 1px solid #dbe2ea;
+            border: 1px solid #cbd5e1;
             border-radius: 10px;
-            margin-bottom: 12px;
             outline: none;
+            margin-bottom: 12px;
+            font-size: 15px;
         }
 
-        .withdraw-btn {
+        .amount-input:focus {
+            border-color: #10b981;
+        }
+
+        .withdraw-button {
             width: 100%;
-            background: #087f5b;
+            padding: 13px;
+            border: 0;
+            border-radius: 10px;
+            background: #047857;
             color: white;
+            font-weight: bold;
+            cursor: pointer;
         }
 
-        .admin-box {
+        .withdraw-button:hover {
+            background: #065f46;
+        }
+
+        .info-box {
             margin-top: 15px;
             padding: 15px;
             background: #fff7ed;
             border: 1px solid #fed7aa;
-            border-radius: 12px;
+            border-radius: 11px;
             color: #9a3412;
-            font-size: 14px;
+            font-size: 13px;
+            line-height: 1.5;
         }
 
-        .admin-btn {
+        .admin-button {
             display: block;
-            text-align: center;
             text-decoration: none;
-            margin-top: 10px;
-            background: #229ED9;
+            text-align: center;
+            background: #229ed9;
             color: white;
             padding: 12px;
+            margin-top: 11px;
             border-radius: 9px;
             font-weight: bold;
         }
 
-        /* TRANSACTION */
+
+        /* =========================
+           TRANSACTIONS
+        ========================= */
 
         .transaction {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            padding: 13px 0;
-            border-bottom: 1px solid #edf0f3;
+            justify-content: space-between;
+            gap: 10px;
+            padding: 14px 0;
+            border-bottom: 1px solid #e2e8f0;
         }
 
         .transaction:last-child {
-            border-bottom: none;
+            border-bottom: 0;
         }
 
-        .transaction-title {
+        .transaction-name {
             font-weight: bold;
             font-size: 14px;
         }
 
         .transaction-date {
-            font-size: 12px;
-            color: #94a3b8;
             margin-top: 4px;
+            color: #94a3b8;
+            font-size: 12px;
         }
 
         .income {
             color: #16a34a;
             font-weight: bold;
+            white-space: nowrap;
         }
 
         .expense {
             color: #dc2626;
             font-weight: bold;
+            white-space: nowrap;
         }
 
         .empty {
             text-align: center;
             color: #94a3b8;
-            padding: 25px;
+            padding: 30px 10px;
         }
 
-        .footer {
-            text-align: center;
-            padding: 30px;
-            color: #94a3b8;
+
+        /* =========================
+           STATUS
+        ========================= */
+
+        .status-card {
+            margin-top: 20px;
+        }
+
+        .status {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px;
+            background: #f0fdf4;
+            border: 1px solid #bbf7d0;
+            border-radius: 11px;
+        }
+
+        .status-dot {
+            width: 11px;
+            height: 11px;
+            background: #22c55e;
+            border-radius: 50%;
+            box-shadow: 0 0 0 5px rgba(34,197,94,.12);
+        }
+
+        .status-text strong {
+            display: block;
+            color: #166534;
+            margin-bottom: 3px;
+        }
+
+        .status-text span {
+            color: #64748b;
             font-size: 13px;
         }
 
-        /* RESPONSIVE */
 
-        @media(max-width: 700px) {
+        /* =========================
+           FOOTER
+        ========================= */
+
+        .footer {
+            text-align: center;
+            padding: 30px 20px;
+            color: #94a3b8;
+            font-size: 12px;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           TOAST
+        ========================= */
+
+        .toast {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            max-width: 320px;
+            padding: 15px 18px;
+            background: #0f172a;
+            color: white;
+            border-radius: 11px;
+            box-shadow: 0 10px 30px rgba(0,0,0,.2);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            transition: .3s;
+            z-index: 100;
+            font-size: 14px;
+        }
+
+        .toast.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media (max-width: 750px) {
+
             .grid {
                 grid-template-columns: 1fr;
             }
 
-            .balance {
-                font-size: 30px;
-            }
-
             .navbar {
-                padding: 12px 20px;
+                padding: 12px 18px;
             }
 
-            .container {
-                padding: 20px 15px;
+            .brand {
+                font-size: 16px;
             }
 
-            .login-box {
-                padding: 25px;
+            .brand-icon {
+                width: 38px;
+                height: 38px;
+            }
+
+            .main-container {
+                padding: 22px 15px;
+            }
+
+            .balance-card {
+                padding: 24px;
+            }
+
+            .balance {
+                font-size: 31px;
+            }
+
+            .balance-buttons {
+                flex-direction: column;
+            }
+
+            .white-button,
+            .telegram-button {
+                width: 100%;
+                text-align: center;
+            }
+
+            .login-card {
+                padding: 27px 22px;
             }
         }
     </style>
 </head>
 
+
 <body>
 
-<!-- ================= LOGIN ================= -->
+<!--
+=====================================================
+VERSI DEMO
+=====================================================
+-->
+
+<div class="demo-banner">
+    ⚠️ DEMO PROJEK TUGASAN — BUKAN PORTAL RASMI STR
+</div>
+
+
+<!--
+=====================================================
+HALAMAN LOGIN
+=====================================================
+-->
 
 <section id="loginPage" class="login-page">
 
-    <div class="login-box">
+    <div class="login-container">
 
-        <div class="logo">D</div>
+        <div class="login-card">
 
-        <h1>Duit Berkembang</h1>
+            <div class="logo">
+                STR
+            </div>
 
-        <p>Simulasi E-Wallet Kuliah</p>
+            <h1 class="login-title">
+                Bantuan STR
+            </h1>
 
-        <div class="input-group">
-            <label>Username</label>
-            <input
-                type="text"
-                id="username"
-                placeholder="Masukkan username"
+            <p class="login-subtitle">
+                Portal Bantuan STR - Versi Demo
+            </p>
+
+
+            <div class="field">
+
+                <label>
+                    Nama Pengguna
+                </label>
+
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Masukkan nama pengguna"
+                    autocomplete="username"
+                >
+
+            </div>
+
+
+            <div class="field">
+
+                <label>
+                    Kata Laluan
+                </label>
+
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Masukkan kata laluan"
+                    autocomplete="current-password"
+                >
+
+            </div>
+
+
+            <button
+                class="main-button"
+                onclick="login()"
             >
+                Log Masuk
+            </button>
+
+
+            <div
+                id="loginError"
+                class="login-error"
+            ></div>
+
+
+            <div class="demo-account">
+
+                <strong>Akaun Demo</strong><br>
+
+                Nama Pengguna:
+                <b>pengguna</b><br>
+
+                Kata Laluan:
+                <b>123456</b>
+
+            </div>
+
         </div>
-
-        <div class="input-group">
-            <label>Password</label>
-            <input
-                type="password"
-                id="password"
-                placeholder="Masukkan password"
-            >
-        </div>
-
-        <button
-            class="btn btn-primary"
-            onclick="login()"
-        >
-            Login
-        </button>
-
-        <div id="loginMessage" class="login-message"></div>
 
     </div>
 
 </section>
 
 
-<!-- ================= APP ================= -->
 
-<section id="app" class="app hidden">
+<!--
+=====================================================
+DASHBOARD
+=====================================================
+-->
+
+<section
+    id="dashboard"
+    class="hidden"
+>
+
 
     <!-- NAVBAR -->
 
@@ -424,39 +713,47 @@
 
         <div class="brand">
 
-            <div class="brand-logo">
-                D
+            <div class="brand-icon">
+                STR
             </div>
 
-            Duit Berkembang
+            Bantuan STR
 
         </div>
 
+
         <button
-            class="btn logout"
+            class="logout-button"
             onclick="logout()"
         >
-            Keluar
+            Log Keluar
         </button>
 
     </nav>
 
 
-    <main class="container">
+
+    <main class="main-container">
+
 
         <!-- WELCOME -->
 
         <div class="welcome">
 
             <h2>
-                Halo, <span id="displayUsername">User</span> 👋
+                Selamat Datang,
+                <span id="displayUsername">
+                    Pengguna
+                </span>
+                👋
             </h2>
 
             <p>
-                Selamat datang di dashboard Duit Berkembang.
+                Ini ialah dashboard simulasi Bantuan STR.
             </p>
 
         </div>
+
 
 
         <!-- BALANCE -->
@@ -464,79 +761,101 @@
         <div class="balance-card">
 
             <div class="balance-label">
-                Saldo tersedia
+                Baki Bantuan
             </div>
 
-            <div class="balance" id="balance">
+            <div
+                id="balance"
+                class="balance"
+            >
                 RM 0.00
             </div>
 
-            <div class="balance-actions">
 
-                <button
-                    class="btn btn-white"
-                    onclick="addDemoBalance()"
-                >
-                    + Tambah Saldo Demo
-                </button>
+            <div class="balance-buttons">
 
-                <!-- GANTI LINK TELEGRAM DI SINI -->
+
+                <!--
+                GANTI LINK DENGAN KUMPULAN TELEGRAM ANDA
+                -->
 
                 <a
                     href="https://t.me/ganti_username_grup"
                     target="_blank"
-                    class="btn btn-telegram"
+                    class="telegram-button"
                 >
-                    Telegram Grup
+                    ✈ Sertai Kumpulan Telegram
                 </a>
+
+
+                <!-- DEMO -->
+
+                <button
+                    class="white-button"
+                    onclick="addDemoBalance()"
+                >
+                    + Tambah Baki Demo
+                </button>
 
             </div>
 
         </div>
 
 
+
+        <!-- GRID -->
+
         <div class="grid">
 
-            <!-- WITHDRAW -->
+
+            <!-- PENGELUARAN -->
 
             <div class="card">
 
-                <h3>
-                    💸 Penarikan Saldo
+                <h3 class="card-title">
+                    💸 Pengeluaran Bantuan
                 </h3>
+
 
                 <input
                     type="number"
                     id="withdrawAmount"
-                    class="withdraw-input"
+                    class="amount-input"
                     placeholder="Masukkan jumlah RM"
                     min="1"
+                    step="0.01"
                 >
+
 
                 <button
-                    class="btn withdraw-btn"
+                    class="withdraw-button"
                     onclick="withdraw()"
                 >
-                    Ajukan Penarikan
+                    Mohon Pengeluaran
                 </button>
 
-                <div class="admin-box">
+
+                <div class="info-box">
 
                     <strong>
-                        Informasi Penarikan
+                        Maklumat Pengeluaran
                     </strong>
 
-                    <p style="margin-top:7px;">
-                        Untuk simulasi tugas ini, proses penarikan
-                        dilanjutkan melalui admin Telegram.
-                    </p>
+                    <br>
 
-                    <!-- GANTI USERNAME ADMIN -->
+                    Ini ialah fungsi simulasi untuk
+                    projek tugasan. Tiada transaksi
+                    wang sebenar dilakukan.
+
+
+                    <!--
+                    GANTI USERNAME ADMIN TELEGRAM
+                    -->
 
                     <a
                         href="https://t.me/ganti_username_admin"
                         target="_blank"
-                        class="admin-btn"
+                        class="admin-button"
                     >
                         💬 Hubungi Admin Telegram
                     </a>
@@ -546,18 +865,20 @@
             </div>
 
 
-            <!-- TRANSACTION -->
+
+            <!-- SEJARAH TRANSAKSI -->
 
             <div class="card">
 
-                <h3>
-                    📋 Riwayat Transaksi
+                <h3 class="card-title">
+                    📋 Sejarah Transaksi
                 </h3>
+
 
                 <div id="transactions">
 
                     <div class="empty">
-                        Belum ada transaksi.
+                        Tiada transaksi lagi.
                     </div>
 
                 </div>
@@ -566,365 +887,561 @@
 
         </div>
 
+
+
+        <!-- STATUS -->
+
+        <div class="card status-card">
+
+            <h3 class="card-title">
+                🔔 Status Akaun
+            </h3>
+
+            <div class="status">
+
+                <div class="status-dot"></div>
+
+                <div class="status-text">
+
+                    <strong>
+                        Akaun Demo Aktif
+                    </strong>
+
+                    <span>
+                        Sistem simulasi berfungsi seperti biasa.
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
     </main>
 
 
+
+    <!-- FOOTER -->
+
     <footer class="footer">
 
-        Duit Berkembang © 2026<br>
+        <strong>
+            Bantuan STR
+        </strong>
 
-        <span>
-            Demo e-wallet untuk keperluan tugas kuliah.
-        </span>
+        <br>
+
+        Versi Demo Projek Tugasan Kuliah © 2026
+
+        <br>
+
+        Laman ini bukan laman rasmi kerajaan Malaysia
+        dan tidak memproses bantuan atau wang sebenar.
 
     </footer>
 
 </section>
 
 
+
+<!-- TOAST -->
+
+<div
+    id="toast"
+    class="toast"
+>
+</div>
+
+
+
 <script>
 
-    /*
-    ========================================
-    DATA DEMO
-    ========================================
-    */
+/*
+=====================================================
+DATA SISTEM
+=====================================================
+*/
 
-    let balance =
-        Number(localStorage.getItem("duitBalance")) || 0;
+let balance =
+    Number(
+        localStorage.getItem(
+            "str_balance"
+        )
+    ) || 0;
 
-    let transactions =
-        JSON.parse(
-            localStorage.getItem("duitTransactions") || "[]"
+
+let transactions =
+    JSON.parse(
+        localStorage.getItem(
+            "str_transactions"
+        ) || "[]"
+    );
+
+
+/*
+=====================================================
+AKAUN DEMO
+=====================================================
+*/
+
+const DEMO_USERNAME = "pengguna";
+const DEMO_PASSWORD = "123456";
+
+
+/*
+=====================================================
+LOGIN
+=====================================================
+*/
+
+function login() {
+
+    const username =
+        document
+            .getElementById("username")
+            .value
+            .trim();
+
+
+    const password =
+        document
+            .getElementById("password")
+            .value
+            .trim();
+
+
+    const error =
+        document.getElementById(
+            "loginError"
         );
 
 
-    /*
-    ========================================
-    LOGIN
-    ========================================
-    */
-
-    function login() {
-
-        const username =
-            document.getElementById("username").value.trim();
-
-        const password =
-            document.getElementById("password").value.trim();
-
-        const message =
-            document.getElementById("loginMessage");
+    error.textContent = "";
 
 
-        if (!username || !password) {
+    if (
+        username === DEMO_USERNAME &&
+        password === DEMO_PASSWORD
+    ) {
 
-            message.textContent =
-                "Username dan password wajib diisi.";
-
-            return;
-        }
+        localStorage.setItem(
+            "str_logged_in",
+            "true"
+        );
 
 
         localStorage.setItem(
-            "duitUsername",
+            "str_username",
             username
         );
 
-        showApp();
+
+        showDashboard();
+
+
+    } else {
+
+        error.textContent =
+            "Nama pengguna atau kata laluan tidak betul.";
 
     }
 
+}
 
-    /*
-    ========================================
-    SHOW APP
-    ========================================
-    */
 
-    function showApp() {
+/*
+=====================================================
+ENTER UNTUK LOGIN
+=====================================================
+*/
 
-        const username =
-            localStorage.getItem("duitUsername");
+document.addEventListener(
+    "keydown",
+    function(event) {
 
-        if (!username) {
-            return;
+        if (
+            event.key === "Enter" &&
+            !document
+                .getElementById("loginPage")
+                .classList
+                .contains("hidden")
+        ) {
+
+            login();
+
         }
 
-        document
-            .getElementById("loginPage")
-            .classList.add("hidden");
-
-        document
-            .getElementById("app")
-            .classList.remove("hidden");
-
-        document
-            .getElementById("displayUsername")
-            .textContent = username;
-
-        updateBalance();
-
-        renderTransactions();
-
     }
+);
 
 
-    /*
-    ========================================
-    LOGOUT
-    ========================================
-    */
+/*
+=====================================================
+SHOW DASHBOARD
+=====================================================
+*/
 
-    function logout() {
+function showDashboard() {
 
-        localStorage.removeItem(
-            "duitUsername"
+    document
+        .getElementById("loginPage")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("dashboard")
+        .classList
+        .remove("hidden");
+
+
+    const username =
+        localStorage.getItem(
+            "str_username"
+        ) || "Pengguna";
+
+
+    document
+        .getElementById("displayUsername")
+        .textContent = username;
+
+
+    updateBalance();
+
+    renderTransactions();
+
+}
+
+
+/*
+=====================================================
+LOGOUT
+=====================================================
+*/
+
+function logout() {
+
+    localStorage.removeItem(
+        "str_logged_in"
+    );
+
+
+    localStorage.removeItem(
+        "str_username"
+    );
+
+
+    document
+        .getElementById("dashboard")
+        .classList
+        .add("hidden");
+
+
+    document
+        .getElementById("loginPage")
+        .classList
+        .remove("hidden");
+
+
+    document
+        .getElementById("username")
+        .value = "";
+
+
+    document
+        .getElementById("password")
+        .value = "";
+
+
+    document
+        .getElementById("loginError")
+        .textContent = "";
+
+}
+
+
+/*
+=====================================================
+FORMAT RM
+=====================================================
+*/
+
+function formatRM(amount) {
+
+    return "RM " +
+        Number(amount).toLocaleString(
+            "ms-MY",
+            {
+                minimumFractionDigits: 2,
+                maximumFractionDigits: 2
+            }
         );
 
-        document
-            .getElementById("app")
-            .classList.add("hidden");
-
-        document
-            .getElementById("loginPage")
-            .classList.remove("hidden");
-
-    }
+}
 
 
-    /*
-    ========================================
-    ADD DEMO BALANCE
-    ========================================
-    */
+/*
+=====================================================
+UPDATE BALANCE
+=====================================================
+*/
 
-    function addDemoBalance() {
+function updateBalance() {
 
-        const amount = 100;
+    document
+        .getElementById("balance")
+        .textContent =
+        formatRM(balance);
 
-        balance += amount;
-
-        saveBalance();
-
-        addTransaction(
-            "Saldo Demo Masuk",
-            amount,
-            "income"
-        );
-
-        updateBalance();
-
-        alert(
-            "RM " +
-            amount.toFixed(2) +
-            " berhasil ditambahkan sebagai saldo demo."
-        );
-
-    }
+}
 
 
-    /*
-    ========================================
-    WITHDRAW
-    ========================================
-    */
+/*
+=====================================================
+SIMPAN BALANCE
+=====================================================
+*/
 
-    function withdraw() {
+function saveBalance() {
 
-        const input =
-            document.getElementById(
-                "withdrawAmount"
-            );
+    localStorage.setItem(
+        "str_balance",
+        balance
+    );
 
-        const amount =
-            Number(input.value);
-
-
-        if (!amount || amount <= 0) {
-
-            alert(
-                "Masukkan jumlah penarikan yang valid."
-            );
-
-            return;
-        }
+}
 
 
-        if (amount > balance) {
+/*
+=====================================================
+TAMBAH BAKI DEMO
+=====================================================
+*/
 
-            alert(
-                "Saldo demo tidak mencukupi."
-            );
+function addDemoBalance() {
 
-            return;
-        }
-
-
-        balance -= amount;
-
-        saveBalance();
+    const amount = 500;
 
 
-        addTransaction(
-            "Pengajuan Penarikan",
-            amount,
-            "expense"
-        );
+    balance += amount;
 
 
-        updateBalance();
+    saveBalance();
 
 
-        input.value = "";
-
-
-        /*
-        Buka Telegram admin setelah WD.
-        GANTI username admin pada link HTML.
-        */
-
-        alert(
-            "Pengajuan penarikan sebesar RM " +
-            amount.toFixed(2) +
-            " dibuat.\n\n" +
-            "Silakan lanjutkan ke Admin Telegram."
-        );
-
-
-        window.open(
-            "https://t.me/ganti_username_admin",
-            "_blank"
-        );
-
-    }
-
-
-    /*
-    ========================================
-    BALANCE
-    ========================================
-    */
-
-    function updateBalance() {
-
-        document
-            .getElementById("balance")
-            .textContent =
-            "RM " +
-            balance.toLocaleString(
-                "en-MY",
-                {
-                    minimumFractionDigits: 2,
-                    maximumFractionDigits: 2
-                }
-            );
-
-    }
-
-
-    /*
-    ========================================
-    SAVE BALANCE
-    ========================================
-    */
-
-    function saveBalance() {
-
-        localStorage.setItem(
-            "duitBalance",
-            balance
-        );
-
-    }
-
-
-    /*
-    ========================================
-    TRANSACTION
-    ========================================
-    */
-
-    function addTransaction(
-        title,
+    addTransaction(
+        "Baki Bantuan Demo",
         amount,
-        type
+        "income"
+    );
+
+
+    updateBalance();
+
+
+    showToast(
+        "RM 500.00 telah ditambah ke baki demo."
+    );
+
+}
+
+
+/*
+=====================================================
+PENGELUARAN
+=====================================================
+*/
+
+function withdraw() {
+
+    const input =
+        document.getElementById(
+            "withdrawAmount"
+        );
+
+
+    const amount =
+        Number(input.value);
+
+
+    if (
+        !amount ||
+        amount <= 0
     ) {
 
-        transactions.unshift({
-
-            title: title,
-
-            amount: amount,
-
-            type: type,
-
-            date:
-                new Date().toLocaleString(
-                    "id-ID"
-                )
-
-        });
-
-
-        /*
-        Maksimal 20 transaksi
-        */
-
-        transactions =
-            transactions.slice(0, 20);
-
-
-        localStorage.setItem(
-            "duitTransactions",
-            JSON.stringify(
-                transactions
-            )
+        showToast(
+            "Sila masukkan jumlah yang sah."
         );
 
-
-        renderTransactions();
+        return;
 
     }
 
 
+    if (
+        amount > balance
+    ) {
+
+        showToast(
+            "Baki tidak mencukupi."
+        );
+
+        return;
+
+    }
+
+
+    balance -= amount;
+
+
+    saveBalance();
+
+
+    addTransaction(
+        "Permohonan Pengeluaran",
+        amount,
+        "expense"
+    );
+
+
+    updateBalance();
+
+
+    input.value = "";
+
+
+    showToast(
+        "Permohonan pengeluaran telah direkodkan."
+    );
+
+
     /*
-    ========================================
-    RENDER TRANSACTIONS
-    ========================================
+    =================================================
+    BUKA TELEGRAM ADMIN
+    GANTI LINK DI BAWAH
+    =================================================
     */
 
-    function renderTransactions() {
+    setTimeout(
+        function() {
 
-        const container =
-            document.getElementById(
-                "transactions"
+            window.open(
+                "https://t.me/ganti_username_admin",
+                "_blank"
             );
 
+        },
+        700
+    );
 
-        if (!transactions.length) {
-
-            container.innerHTML = `
-                <div class="empty">
-                    Belum ada transaksi.
-                </div>
-            `;
-
-            return;
-        }
+}
 
 
-        container.innerHTML =
-            transactions.map(
-                transaction => {
+/*
+=====================================================
+TRANSACTION
+=====================================================
+*/
+
+function addTransaction(
+    title,
+    amount,
+    type
+) {
+
+    const transaction = {
+
+        title: title,
+
+        amount: amount,
+
+        type: type,
+
+        date:
+            new Date()
+                .toLocaleString(
+                    "ms-MY"
+                )
+
+    };
+
+
+    transactions.unshift(
+        transaction
+    );
+
+
+    /*
+    Maksimum 20 transaksi
+    */
+
+    transactions =
+        transactions.slice(
+            0,
+            20
+        );
+
+
+    localStorage.setItem(
+        "str_transactions",
+        JSON.stringify(
+            transactions
+        )
+    );
+
+
+    renderTransactions();
+
+}
+
+
+/*
+=====================================================
+RENDER TRANSACTIONS
+=====================================================
+*/
+
+function renderTransactions() {
+
+    const container =
+        document.getElementById(
+            "transactions"
+        );
+
+
+    if (
+        transactions.length === 0
+    ) {
+
+        container.innerHTML = `
+            <div class="empty">
+                Tiada transaksi lagi.
+            </div>
+        `;
+
+        return;
+
+    }
+
+
+    container.innerHTML =
+        transactions
+            .map(
+                function(item) {
+
+                    const income =
+                        item.type === "income";
+
 
                     const sign =
-                        transaction.type === "income"
+                        income
                             ? "+"
                             : "-";
 
+
                     const className =
-                        transaction.type === "income"
+                        income
                             ? "income"
                             : "expense";
 
@@ -935,14 +1452,16 @@
 
                             <div>
 
-                                <div class="transaction-title">
-                                    ${escapeHtml(
-                                        transaction.title
+                                <div class="transaction-name">
+                                    ${escapeHTML(
+                                        item.title
                                     )}
                                 </div>
 
                                 <div class="transaction-date">
-                                    ${transaction.date}
+                                    ${escapeHTML(
+                                        item.date
+                                    )}
                                 </div>
 
                             </div>
@@ -950,10 +1469,9 @@
                             <div class="${className}">
 
                                 ${sign}
-                                RM
-                                ${Number(
-                                    transaction.amount
-                                ).toFixed(2)}
+                                ${formatRM(
+                                    item.amount
+                                )}
 
                             </div>
 
@@ -962,43 +1480,106 @@
                     `;
 
                 }
-            ).join("");
+            )
+            .join("");
 
-    }
-
-
-    /*
-    ========================================
-    SECURITY HELPER
-    ========================================
-    */
-
-    function escapeHtml(text) {
-
-        const div =
-            document.createElement("div");
-
-        div.textContent = text;
-
-        return div.innerHTML;
-
-    }
+}
 
 
-    /*
-    ========================================
-    AUTO LOGIN
-    ========================================
-    */
+/*
+=====================================================
+ESCAPE HTML
+=====================================================
+*/
 
-    document.addEventListener(
-        "DOMContentLoaded",
-        function() {
+function escapeHTML(text) {
 
-            showApp();
+    const element =
+        document.createElement(
+            "div"
+        );
+
+
+    element.textContent = text;
+
+
+    return element.innerHTML;
+
+}
+
+
+/*
+=====================================================
+TOAST
+=====================================================
+*/
+
+let toastTimer;
+
+
+function showToast(message) {
+
+    const toast =
+        document.getElementById(
+            "toast"
+        );
+
+
+    toast.textContent =
+        message;
+
+
+    toast.classList.add(
+        "show"
+    );
+
+
+    clearTimeout(
+        toastTimer
+    );
+
+
+    toastTimer =
+        setTimeout(
+            function() {
+
+                toast.classList.remove(
+                    "show"
+                );
+
+            },
+            3000
+        );
+
+}
+
+
+/*
+=====================================================
+AUTO LOGIN SESSION
+=====================================================
+*/
+
+document.addEventListener(
+    "DOMContentLoaded",
+    function() {
+
+        const loggedIn =
+            localStorage.getItem(
+                "str_logged_in"
+            );
+
+
+        if (
+            loggedIn === "true"
+        ) {
+
+            showDashboard();
 
         }
-    );
+
+    }
+);
 
 </script>
 
