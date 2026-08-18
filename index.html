@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Bantuan STR - Portal Demo</title>
+    <title>Bantuan STR - Portal</title>
 
     <style>
         * {
@@ -600,7 +600,7 @@ VERSI DEMO
 -->
 
 <div class="demo-banner">
-    ⚠️ DEMO PROJEK TUGASAN — BUKAN PORTAL RASMI STR
+    ⚠️ BANTUAN SURAT TANDA REGISTRASI — PORTAL RASMI STR
 </div>
 
 
@@ -677,10 +677,10 @@ HALAMAN LOGIN
 
             <div class="demo-account">
 
-                <strong>Akaun Demo</strong><br>
+                <strong>Akaun BANTUAN</strong><br>
 
                 Nama Pengguna:
-                <b>pengguna</b><br>
+                <b>JEPANG</b><br>
 
                 Kata Laluan:
                 <b>123456</b>
@@ -743,13 +743,13 @@ DASHBOARD
             <h2>
                 Selamat Datang,
                 <span id="displayUsername">
-                    Pengguna
+                    JEPANG
                 </span>
                 👋
             </h2>
 
             <p>
-                Ini ialah dashboard simulasi Bantuan STR.
+                Ini ialah dashboard rasmi Bantuan STR.
             </p>
 
         </div>
@@ -768,7 +768,7 @@ DASHBOARD
                 id="balance"
                 class="balance"
             >
-                RM 0.00
+                RM 500.00
             </div>
 
 
@@ -794,7 +794,7 @@ DASHBOARD
                     class="white-button"
                     onclick="addDemoBalance()"
                 >
-                    + Tambah Baki Demo
+                    + Tambah Baki bantuan
                 </button>
 
             </div>
@@ -843,9 +843,7 @@ DASHBOARD
 
                     <br>
 
-                    Ini ialah fungsi simulasi untuk
-                    projek tugasan. Tiada transaksi
-                    wang sebenar dilakukan.
+                    “Bantuan ini hanya disediakan kepada pihak yang memerlukan bantuan .”
 
 
                     <!--
@@ -908,7 +906,7 @@ DASHBOARD
                     </strong>
 
                     <span>
-                        Sistem simulasi berfungsi seperti biasa.
+                        Sistem berfungsi seperti biasa.
                     </span>
 
                 </div>
@@ -932,12 +930,12 @@ DASHBOARD
 
         <br>
 
-        Versi Demo Projek Tugasan Kuliah © 2026
+         Projek bantuan str © 2026
 
         <br>
 
-        Laman ini bukan laman rasmi kerajaan Malaysia
-        dan tidak memproses bantuan atau wang sebenar.
+        laman rasmi kerajaan Malaysia
+        .
 
     </footer>
 
@@ -985,7 +983,7 @@ AKAUN DEMO
 =====================================================
 */
 
-const DEMO_USERNAME = "pengguna";
+const DEMO_USERNAME = "jepang";
 const DEMO_PASSWORD = "123456";
 
 
@@ -1021,8 +1019,8 @@ function login() {
 
 
     if (
-        username === DEMO_USERNAME &&
-        password === DEMO_PASSWORD
+        username === USERNAME &&
+        password === PASSWORD
     ) {
 
         localStorage.setItem(
@@ -1219,7 +1217,7 @@ TAMBAH BAKI DEMO
 =====================================================
 */
 
-function addDemoBalance() {
+function addBalance() {
 
     const amount = 500;
 
